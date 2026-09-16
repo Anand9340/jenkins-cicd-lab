@@ -11,3 +11,9 @@ def test_health():
     response = client.get("/health")
     assert response.status_code == 200
     assert response.data == b"OK"
+
+def test_home():
+    client = app.test_client()
+    response = client.get("/")
+    assert response.status_code == 200
+    assert b"Hello from Jenkins CI/CD - Version 3!" in response.data
